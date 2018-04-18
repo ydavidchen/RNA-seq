@@ -8,7 +8,7 @@ Original script author: Dr. Ting Wang (@wt2015-github via [repo](github.com/wt20
 
 ### Credit
 
-Please refer to the original author's [repository](github.com/wt2015-github/RNA-seq). This [remote GitHub branch](github.com/ydavidchen/RNA-seq) has been adapted to and optimized for extracting gene expression data.
+Please refer to the [original author's repository](github.com/wt2015-github/RNA-seq). This remote GitHub branch has been adapted to and optimized for extracting gene expression data only.
 
 Please also refer to the relevant citations for open-source software used:
 * [RSEM](https://www.ncbi.nlm.nih.gov/pubmed/21816040)
@@ -59,14 +59,15 @@ The paths of some genome files and tools need to be modified accordingly:
 
 ## Data Set
 
-A data set can be found here. Please download the paired-end SRR runs and store in the user-specified directory. As a reminder, storing as the compressed *.fastq.gz* format is fine.
+A data set can be found here. Please download the paired-end SRR runs and store in the user-specified directory. As a reminder, keeping the files as the compressed *.fastq.gz* format is fine.
 
 [Paired-end Illumina HiSeq2000 breast cancer MCF7 cell line](https://www.ebi.ac.uk/ena/data/view/SRR1021668)
 
 ## Procedure
 
-* Download all dependencies by interactively running *Dependency *
+* Download all dependencies by interactively running *Dependency.sh*
 * Download human hg19 genome, gene, and transcriptome annotations via [Ensembl ftp site](ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/) and [UCSC Table Browser](http://rohsdb.cmb.usc.edu/GBshape/cgi-bin/hgTables)
+* Adapt the pipeline script
 
 # Coming soon
 
