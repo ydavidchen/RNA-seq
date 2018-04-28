@@ -21,7 +21,7 @@ Please also refer to the relevant citations for open-source software used:
 ### Scripts and Files
 
 * *Dependencies.sh* includes commands and instructions for installing relevant open-source bioinformatics software, and setting executable aliases. This script is to be executed in real-time *interactively*. Adaptation to user's own computer machine is most likely necessary.
-* *run_RNAseq_STAR.RSEM.sh* includes QC, trimming, contamination screening, mapping, gene/isoform expression quantification, and summary steps (adapted from the [original author](github.com/wt2015-github/RNA-seq)). This script is to be executed as its entirety in command line.
+* *executeMeBang.sh* includes QC, trimming, contamination screening, mapping, gene/isoform expression quantification, and summary steps (adapted from the [original author](github.com/wt2015-github/RNA-seq)). This script is to be executed as its entirety in command line.
 
 Upon successful completion of this Unix shell pipeline, you may use gene expression matrices exported for downstream analyses, which are often performed in the [R statistical programming environment](www.r-project.org).
 
@@ -29,7 +29,7 @@ Upon successful completion of this Unix shell pipeline, you may use gene express
 
 ## Syntax
 
-`run_RNAseq_STAR.RSEM.sh -g hg19 <-p> -i <path_of_inputs> -o <path_of_outputs> -t <threads>`
+`executeMeBang.sh -g hg19 <-p> -i <path_of_inputs> -o <path_of_outputs> -t <threads>`
 
 ## Arguments
 
@@ -61,12 +61,16 @@ The paths of some genome files and tools need to be modified accordingly:
 
 A data set can be found here. Please download the paired-end SRR runs and store in the user-specified directory. As a reminder, keeping the files as the compressed *.fastq.gz* format is fine.
 
-[Paired-end Illumina HiSeq2000 breast cancer MCF7 cell line](https://www.ebi.ac.uk/ena/data/view/SRR1021668)
+[Paired-end Illumina HiSeq2000 MCF7 breast cancer cell line sample](https://www.ebi.ac.uk/ena/data/view/SRR1021668)
+
+Example execution:
+
+`./executeMeBang.sh -g hg19 -p -i /Users/DavidKevinChen/repos/RNA-seq/data -o /Users/DavidKevinChen/repos/RNA-seq/data /Users/DavidKevinChen/repos/RNA-seq/results`
 
 ## Procedure
 
-* Download all dependencies by interactively running *Dependency.sh*
-* Download human hg19 genome, gene, and transcriptome annotations via [Ensembl ftp site](ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/) and [UCSC Table Browser](http://rohsdb.cmb.usc.edu/GBshape/cgi-bin/hgTables)
+* Download all dependencies by interactively running through *Dependency.sh*
+* Download human reference *hg19* genome, gene, and transcriptome annotations via [Ensembl ftp site](ftp://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/) and [UCSC Table Browser](http://rohsdb.cmb.usc.edu/GBshape/cgi-bin/hgTables)
 * Adapt the pipeline script
 
 # Coming soon

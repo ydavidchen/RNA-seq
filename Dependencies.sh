@@ -1,8 +1,12 @@
-# Objective: Install dependencies and make them executable via command line
+######################################################################################################
+# Install dependencies and make them executable via command line
 # Script author: David Chen (@ydavidchen)
+# Date: April 16, 2018
 # Notes:
-# 1. This script is for MacOS. All algorithms also run on Unix/Linux; installation method/format may be different.
-# 2. Depending on your system, you may need to install additional softwares/commands (e.g. Git).
+# 1. This script is to be run interactively in MacOS Terminal. 
+# 2. This script is for MacOS. All algorithms also run on Unix/Linux. Installation method/format may be different.
+# 3. Depending on your system, you may need to install additional softwares/commands (e.g. git).
+######################################################################################################
 
 #-------------------------------Phase 1: Workspace setup-------------------------------
 ## Set current working directory:
@@ -38,30 +42,28 @@ cd /iGenomes/Homo_sapiens/UCSC/hg19/Sequence/RSEM_STAR_Index
 unzip ~/Downloads/fastqc_v0.11.7.zip
 chmod +x FastQC/fastqc #change permission
 sudo ln -s /Users/DavidKevinChen/repos/RNA-seq/FastQC/fastqc /usr/local/bin/fastqc #absolute path required!
-fastqc --help #check
+fastqc --v #availability check
 
 
 ## 2. multqc
 pip install --upgrade pip
 pip install multiqc #1-step installation into command line; cython may be required
-multiqc --help #check
+multiqc --version #availability check
 
 ## 3. Trim Galore!
 ## Install from command line
 pip install cutadapt
-cutadapt --version #1.16
-fastqc -v
 curl -fsSL https://github.com/FelixKrueger/TrimGalore/archive/0.4.5.tar.gz -o trim_galore.tar.gz
 tar xvzf trim_galore.tar.gz
 sudo mv TrimGalore-0.4.5/trim_galore /usr/local/bin
-trim_galore --help
+trim_galore --v #availability check
 
 ## 4. fastq_screen
 ## https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqscreen
 tar xvzf ~/Downloads/fastq_screen_v0.11.4.tar.gz
 chmod +x fastq_screen_v0.11.4/fastq_screen
 sudo mv fastq_screen_v0.11.4/fastq_screen /usr/local/bin
-fastq_screen --help
+fastq_screen --v #availability check
 
 ## 5. STAR
 brew install cmake gcc #if already installed, run: brew upgrade gcc
@@ -77,14 +79,14 @@ pwd
 # make manual #build documentation
 # cd ..
 conda install star -c bioconda #if above commented code fails; but requires Anaconda/miniconda
-STAR --help #check
+STAR --version #availability check
 
 ## 6. RSEM
 tar xvzf ~/Downloads/RSEM-1.3.0.tar.gz
 chmod +x RSEM-1.3.0/rsem-*
 sudo mv RSEM-1.3.0/rsem-* /usr/local/bin
 sudo mv RSEM-1.3.0/rsem_perl_utils.pm /usr/local/bin
-rsem-calculate-expression --help #check
+rsem-calculate-expression --version #availability check
 
 ## 7. samtools
 ## Download source: http://www.htslib.org/download/
@@ -96,7 +98,7 @@ make install
 cd /Users/DavidKevinChen/samtools/bin
 chmod +x samtools
 sudo mv samtools /usr/local/bin
-samtools -v #check
+samtools --version #availability check
 
 ## 8. Picard tools from Broad Institute
 ## Download source code from https://broadinstitute.github.io/picard/
@@ -111,7 +113,7 @@ cd picard/
 java -jar build/libs/picard.jar
 
 ## Set environment variable (i.e. alias):
-atom ~/.bashrc #other editors OK
+nano ~/.bashrc #other editors OK
 ## Add the following to the file (without hastag; and modify path!)
 # export PICARD="/Users/DavidKevinChen/repos/RNA-seq/picard/build/libs/picard.jar";
 
@@ -119,6 +121,7 @@ atom ~/.bashrc #other editors OK
 source ~/.bashrc
 
 ## Test Picard
+chmod +x /Users/DavidKevinChen/repos/RNA-seq/picard/build/libs/picard.jar
 java -jar $PICARD -h
 
 ## 9. Make summarize_RNAseq_STAR.RSEM.pl available for execution
