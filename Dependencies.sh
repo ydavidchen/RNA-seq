@@ -1,12 +1,11 @@
-######################################################################################################
+#!/bin/bash
 # Install dependencies and make them executable via command line
-# Script author: David Chen (@ydavidchen)
+# Author: David Chen (@ydavidchen)
 # Date: April 16, 2018
 # Notes:
 # 1. This script is to be run interactively in MacOS Terminal. 
 # 2. This script is for MacOS. All algorithms also run on Unix/Linux. Installation method/format may be different.
 # 3. Depending on your system, you may need to install additional softwares/commands (e.g. git).
-######################################################################################################
 
 #-------------------------------Phase 1: Workspace setup-------------------------------
 ## Set current working directory:
@@ -36,7 +35,7 @@ mv ~/Downloads/hg19_RefSeq.bed iGenomes/Homo_sapiens/UCSC/hg19/Annotation/Genes/
 ## Move genomic/transcriptomic annotations from Downloads folder to
 cd /iGenomes/Homo_sapiens/UCSC/hg19/Sequence/RSEM_STAR_Index
 
-#-------------------------------Phase 2: 9-step software installation, setup and testing------------------------------
+#-------------------------------Phase 2: 10-step software installation------------------------------
 ## 1. fastqc:
 ## Download fastqc from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ into working directory
 unzip ~/Downloads/fastqc_v0.11.7.zip
@@ -126,3 +125,11 @@ java -jar $PICARD -h
 
 ## 9. Make summarize_RNAseq_STAR.RSEM.pl available for execution
 sudo cp summarize_RNAseq_STAR.RSEM.pl /usr/local/bin/
+
+## 10. Install featureCounts:
+tar xvzf ~/Downloads/subread-1.6.1-MacOSX-x86_64.tar.gz 
+cd subread-1.6.1-MacOSX-x86_64/
+sudo cp bin/featureCounts /usr/local/bin
+featureCounts -v
+
+
